@@ -1,0 +1,20 @@
+#!/system/bin/sh
+
+
+VERSION_DIR=.
+
+
+function script_usage() {
+
+    printf "Usage: $1 <frida-version>\n";
+
+}
+
+
+
+if [[ $# == 1 ]]; then
+    echo "- setting frida server version to $1"
+    echo -n $1 > "$VERSION_DIR/frida_version.txt"
+else
+    script_usage $0
+fi;
