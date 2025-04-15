@@ -26,9 +26,21 @@ remove_unused_binaries() {
 }
 
 
+prepare_frida_version_set_script() {
+
+    # VERSION_DIR directory to the module directory
+    sed -i "s|VERSION_DIR=\.|VERSION_DIR=$MODPATH|g" $MODPATH/scripts/frida_ver_set
+
+    # copy to system/bin
+    cp -f "$MODPATH/scripts/frida_ver_set" "$MODPATH/system/bin"
+
+}
+
+
 set_permission() {
 
     chmod +x "$MODPATH/system/bin/busybox-$ARCH"
+    chmod +x "$MODPATH/system/bin/frida_ver_set"
 
 }
 
@@ -43,6 +55,7 @@ prepare_symlinks() {
 
 
 remove_unused_binaries
+prepare_frida_version_set_script
 set_permission
 prepare_symlinks
 
