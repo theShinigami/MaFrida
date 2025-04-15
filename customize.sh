@@ -1,16 +1,14 @@
+#!/system/bin/sh
 
-ui_print "---------- DEBUG PRINTS ----------"
-ui_print "Currect Magisk Version: $MAGISK_VER"
-ui_print "Currect Magisk Version code: $MAGISK_VER_CODE"
-ui_print "Boot Mode: $BOOTMODE"
-ui_print "Temp directory: $TMPDIR"
-ui_print "Module installation zip: $ZIPFILE"
-ui_print "Device architecture: $ARCH"
-ui_print "Is Arch x64: $IS64BIT"
-ui_print "Android API level: $API"
-ui_print "Module path: $MODPATH"
-ui_print "----------------------------------"
 
+prepare_logging() {
+
+    [ ! -d $MODPATH/logs ] && mkdir -p $MODPATH/logs
+
+    exec 2> $MODPATH/logs/customize.log
+    set -x
+
+}
 
 check_device_arch() {
 
@@ -43,18 +41,14 @@ prepare_busybox() {
 }
 
 
-prepare_binaries() {
-
-    ui_print "- Preparing binaries..."
-
-    ui_print "- wget..."
-    ln -s "$MODPATH/system/bin/busybox-$ARCH" "$MODPATH/system/bin/wget"
-
-}
 
 
+prepare_logging
 check_device_arch
 prepare_busybox
-prepare_binaries
+
+
+ui_print "- Install complete"
+ui_print "- Reboot your device to complete your installation!"
 
 
