@@ -12,13 +12,13 @@ remove_unused_binaries() {
 
     BIN_DIR="$MODPATH/system/bin"
 
-    for busy_bin in $(ls $BIN_DIR); do
-        if [ -f "$BIN_DIR/$busy_bin" ]; then
-            if [[ "$busy_bin" == *$ARCH ]]; then
-                echo "- Found arch busybox at $BIN_DIR/$busy_bin, skipping..."
+    for bin in $(ls $BIN_DIR); do
+        if [ -f "$BIN_DIR/$bin" ]; then
+            if [[ "$bin" == *$ARCH ]]; then
+                echo "- Found arch bin at $BIN_DIR/$bin, skipping..."
             else
-                echo "- removing $BIN_DIR/$busy_bin";
-                rm "$BIN_DIR/$busy_bin"
+                echo "- removing $BIN_DIR/$bin";
+                rm "$BIN_DIR/$bin"
             fi
         fi
     done
@@ -40,6 +40,7 @@ prepare_frida_version_set_script() {
 set_permission() {
 
     chmod +x "$MODPATH/system/bin/busybox-$ARCH"
+    chmod +x "$MODPATH/system/bin/curl-$ARCH"
     chmod +x "$MODPATH/system/bin/frida_ver_set"
 
 }
@@ -49,6 +50,8 @@ prepare_symlinks() {
 
     ln -s "$MODPATH/system/bin/busybox-$ARCH" "$MODPATH/system/bin/wget"
     ln -s "$MODPATH/system/bin/busybox-$ARCH" "$MODPATH/system/bin/nohup"
+    ln -s "$MODPATH/system/bin/busybox-$ARCH" "$MODPATH/system/bin/xz"
+    ln -s "$MODPATH/system/bin/curl-$ARCH" "$MODPATH/system/bin/curl"
 
 }
 

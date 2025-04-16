@@ -5,16 +5,24 @@ VERSION_DIR=.
 
 
 function script_usage() {
-
-    printf "Usage: $1 <frida-version>\n";
-
+    printf "Usage: $1 <frida-version | -g>\n"
+    printf "  <frida-version>   Install the specified Frida version (e.g., 16.1.4)\n"
+    printf "  -g                Show the currently set Frida version\n"
 }
 
 
 
 if [[ $# == 1 ]]; then
-    echo "- setting frida server version to $1"
-    echo -n $1 > "$VERSION_DIR/frida_version.txt"
+    if [[ $1 == "-g" ]]; then
+        if [[ -f "$VERSION_DIR/frida_version.txt" ]]; then
+            echo "- current Frida server version: $(cat "$VERSION_DIR/frida_version.txt")"
+        else
+            echo "! no Frida version set yet"
+        fi;
+    else
+        echo "- setting frida server version to $1"
+        echo -n $1 > "$VERSION_DIR/frida_version.txt"
+    fi;
 else
     script_usage $0
 fi;
