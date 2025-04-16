@@ -48,7 +48,6 @@ set_permission() {
 
 prepare_symlinks() {
 
-    ln -s "$MODPATH/system/bin/busybox-$ARCH" "$MODPATH/system/bin/wget"
     ln -s "$MODPATH/system/bin/busybox-$ARCH" "$MODPATH/system/bin/nohup"
     ln -s "$MODPATH/system/bin/busybox-$ARCH" "$MODPATH/system/bin/xz"
     ln -s "$MODPATH/system/bin/curl-$ARCH" "$MODPATH/system/bin/curl"
