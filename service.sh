@@ -75,8 +75,6 @@ function init_frida_server() {
             echo "- Server already downloaded!"
         else
             curl --retry $RETRY -L -k -o "$MODPATH/files/frida-server.xz" "$download_url"
-            
-            
 
             # extract
             xz -f -d "$MODPATH/files/frida-server.xz"
