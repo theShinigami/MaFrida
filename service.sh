@@ -2,11 +2,9 @@
 
 
 MODPATH=${0%/*}
-# MODPATH=.
 BASE="https://github.com/frida/frida/releases"
 BASE_API="https://api.github.com/repos/frida/frida/releases"
 ARCH=$(getprop ro.product.cpu.abi | cut -d '-' -f1)
-# ARCH="arm64"
 FRIDA_VERSION_FILE="frida_version.txt"
 RETRY=10
 
