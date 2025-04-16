@@ -1,0 +1,2 @@
+curl version 7.78.0
+https://github.com/robertying/openssl-curl-android/releases
