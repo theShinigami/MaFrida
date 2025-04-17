@@ -1,4 +1,4 @@
-id=frida_deployer
+id=mafrida
 name=Quick Frida Server Deployment Module
 version=1.0
 versionCode=100
