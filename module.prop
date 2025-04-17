@@ -1,6 +1,6 @@
 id=mafrida
-name=Quick Frida Server Deployment Module
+name=MaFrida
 version=1.0
 versionCode=100
 author=Sal
-description=A module to automatically deploy the Frida Server
+description=A module to automatically deploy and manage the Frida Server on Android
