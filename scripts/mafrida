@@ -1,0 +1,91 @@
+#!/system/bin/sh
+
+
+VERSION_DIR=.
+
+
+function script_usage() {
+    printf "Usage: mafrida [--set <frida-version> | -g | kill | start | status]\n"
+    printf "  --set <version>   Set and install the specified Frida version (e.g., 16.1.4)\n"
+    printf "  -g                Show the currently set Frida version\n"
+    printf "  download          Download the frida-server binary for the set version\n"
+    printf "  kill              Force kill any running frida-server instance\n"
+    printf "  start             Start frida-server using the set version\n"
+    printf "  status            Check if frida-server is currently running\n"
+}
+
+
+
+
+if [[ $# -lt 3 ]]; then
+
+    # set frida server version
+    if [[ $1 == "--set" ]]; then
+
+        if [[ $# -ne 2 ]]; then
+            echo "- must specify the version"
+            exit 1
+        else
+            echo "- setting frida server version to $2"
+            echo -n $2 > "$VERSION_DIR/frida_version.txt"
+        fi;
+
+    # get frida server version
+    elif [[ $1 == "-g" ]]; then
+        if [[ -f "$VERSION_DIR/frida_version.txt" ]]; then
+            echo "- current Frida server version: $(cat "$VERSION_DIR/frida_version.txt")"
+        else
+            echo "! no Frida version set yet"
+        fi;
+    
+    elif [[ $1 == "download" ]]; then
+        if pgrep -f "frida-server" > /dev/null; then
+            echo "- Frida server is already running. Please kill the process first!"
+            exit 1
+        elif [[ ! -f "$VERSION_DIR/frida_version.txt" ]]; then
+            echo "- Set frida version first."
+            exit 1
+        else
+            . $VERSION_DIR/common.sh
+            MODPATH=$VERSION_DIR
+            init_download_dir >/dev/null 2>&1
+            echo "- Downloading..."
+            init_frida_server > /dev/null 2>&1
+            echo "- Done."
+        fi;
+    
+    # kill server if running
+    elif [[ $1 == "kill" ]]; then
+        if pgrep -f "frida-server" > /dev/null; then
+            kill -9 $(pidof frida-server)
+            echo "- server killed!"
+        
+        else
+            echo "- server is not running."
+        fi;
+    
+    # start frida server
+    elif [[ $1 == "start" ]]; then
+        if pgrep -f "frida-server" > /dev/null; then
+            echo "- server is already running."
+        else
+            nohup "$VERSION_DIR/files/frida-server" > "$VERSION_DIR/nohup.out" 2>&1 &
+            echo "- server started!, happy hacking :)"
+        fi;
+    
+    # check if server is running
+    elif [[ $1 == "status" ]]; then
+        if pgrep -f "frida-server" > /dev/null; then
+            echo "- server is running :)"
+        else
+            echo "- server is not running :("
+        fi;
+
+    
+    else
+        script_usage
+
+    fi;
+else
+    script_usage
+fi;
