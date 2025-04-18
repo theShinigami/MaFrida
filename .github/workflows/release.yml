@@ -6,11 +6,6 @@ on:
       - "v*"
 
 
-  
-permissions:
-  contents: write
-
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,3 +28,6 @@ jobs:
           name: "MaFrida Release ${{ steps.get_tag.outputs.tag }}"
           tag: ${{ steps.get_tag.outputs.tag }}
           body: "${{ steps.get_tag.outputs.tag }}"
+          allowUpdates: true
+          artifactErrorsFailBuild: false
+
