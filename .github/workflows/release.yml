@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get tag
+        id: get_tag
+        run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Create a ZIP
+        run: |
+          mkdir -p build
+          zip -r ./build/MaFrida-${{ steps.get_tag.outputs.tag }}.zip *
+      
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/*.zip"
+          name: "MaFrida Release ${{ steps.get_tag.outputs.tag }}"
+          commit: ${{ steps.get_tag.outputs.tag }}
+          body: "${{ steps.get_tag.outputs.tag }}"
