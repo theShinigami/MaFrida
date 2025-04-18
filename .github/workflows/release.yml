@@ -22,7 +22,8 @@ jobs:
           mkdir -p build
           zip -r ./build/MaFrida-${{ steps.get_tag.outputs.tag }}.zip *
       
-      - uses: ncipollo/release-action@v1
+      - name: Release
+        uses: ncipollo/release-action@v1
         with:
           artifacts: "build/*.zip"
           name: "MaFrida Release ${{ steps.get_tag.outputs.tag }}"
@@ -30,4 +31,5 @@ jobs:
           body: "${{ steps.get_tag.outputs.tag }}"
           allowUpdates: true
           artifactErrorsFailBuild: false
+          token: ${{ secrets.TOKEN }}
 
