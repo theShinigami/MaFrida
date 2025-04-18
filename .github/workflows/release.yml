@@ -9,8 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions: 
-      contents: write
     
     steps:
       - uses: actions/checkout@v4
@@ -28,5 +26,5 @@ jobs:
         with:
           artifacts: "build/*.zip"
           name: "MaFrida Release ${{ steps.get_tag.outputs.tag }}"
-          commit: ${{ steps.get_tag.outputs.tag }}
+          tag: ${{ steps.get_tag.outputs.tag }}
           body: "${{ steps.get_tag.outputs.tag }}"
