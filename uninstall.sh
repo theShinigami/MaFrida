@@ -14,12 +14,12 @@ rm -rf "$MODPATH/files"
 
 
 # delete binaries
-rm -f "$MODPATH/busybox-$ARCH"
-rm -f "$MODPATH/curl"
-rm -f "$MODPATH/curl-$ARCH"
-rm -f "$MODPATH/frida_ver_set"
-rm -f "$MODPATH/nohup"
-rm -f "$MODPATH/xz"
+rm -f "$MODPATH/system/bin/busybox-$ARCH"
+rm -f "$MODPATH/system/bin/curl"
+rm -f "$MODPATH/system/bin/curl-$ARCH"
+rm -f "$MODPATH/system/bin/mafrida"
+rm -f "$MODPATH/system/bin/nohup"
+rm -f "$MODPATH/system/bin/xz"
 
 
 echo "MaFrida uninstalled!"
