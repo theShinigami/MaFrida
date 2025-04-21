@@ -20,14 +20,17 @@ A simple yet powerful Magisk module that automates starting the [Frida](https://
 Use the `mafrida` CLI tool to manage the [Frida](https://github.com/frida/frida) server:
 
 ```sh
-Usage: mafrida [--set <frida-version> | -g | download | kill | start | status]
-
-  --set <version>   Set and install the specified Frida version (e.g., 16.1.4)
-  -g                Show the currently set Frida version
-  download          Download the frida-server binary for the set version
-  kill              Force kill any running frida-server instance
-  start             Start frida-server using the set version
-  status            Check if frida-server is currently running
+function script_usage() {
+    printf "Usage: mafrida [--set <frida-version> | -g | kill | start | status]\n"
+    printf "  --set <version>   Set and install the specified Frida version (e.g., 16.1.4)\n"
+    printf "  -g                Show the currently set Frida version\n"
+    printf "  download          Download the frida-server binary for the set version\n"
+    printf "  kill              Force kill any running frida-server instance\n"
+    printf "  start             Start frida-server using the set version\n"
+    printf "  status            Check if frida-server is currently running\n"
+    printf "  enable            Enable frida-server to auto-start on boot\n"
+    printf "  disable           Disable frida-server from auto-starting on boot\n"
+}
 ```
 
 ### Examples
@@ -52,15 +55,25 @@ mafrida start
 
 #### Check server status:
 
-```
+```sh
 mafrida status
 ```
 
 #### Kill the running instance:
 
-```
+```sh
 mafrida kill
 ````
+
+#### Enable frida server on boot
+```sh
+mafrida enable
+```
+
+#### Disable frida server on boot
+```sh
+mafrida disable
+```
 
 ## Requirements
 
