@@ -2,11 +2,12 @@
 
 MODPATH=${0%/*}
 ARCH=$(getprop ro.product.cpu.abi | cut -d '-' -f1)
+FRIDA_SERVER_FILENAME="shiny-egg"
 
 
 # delete frida server
-if pgrep -f "frida-server" > /dev/null; then
-    kill -9 $(pidof frida-server)
+if pgrep -f "$FRIDA_SERVER_FILENAME" > /dev/null; then
+    kill -9 $(pidof $FRIDA_SERVER_FILENAME)
 fi;
 
 rm -rf "$MODPATH/files"
