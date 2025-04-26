@@ -4,6 +4,7 @@ BASE_API="https://api.github.com/repos/frida/frida/releases"
 ARCH=$(getprop ro.product.cpu.abi | cut -d '-' -f1)
 FRIDA_VERSION_FILE="frida_version.txt"
 RETRY=10
+FRIDA_SERVER_FILENAME="shiny-egg"
 
 
 function get_frida_version() {
@@ -37,8 +38,6 @@ function get_frida_version() {
 
 function init_download_dir() {
 
-    FRIDA_SERVER_FILENAME="frida-server"
-
     if [ -d "$MODPATH/files/$FRIDA_SERVER_FILENAME" ]; then
         echo "- '$FRIDA_SERVER_FILE' directory exists, cleaning..."
         rm -f "$MODPATH/files/FRIDA_SERVER_FILENAME"
@@ -57,32 +56,32 @@ function init_frida_server() {
     download_url="$BASE/download/${frida_version}/${server_file}.xz"
 
 
-    if [ -f "$MODPATH/files/frida-server" ]; then
+    if [ -f "$MODPATH/files/$FRIDA_SERVER_FILENAME" ]; then
 
         # get downloaded frida server version
-        current_server_version=$($MODPATH/files/frida-server --version | tr -d '[:space:]')
+        current_server_version=$($MODPATH/files/$FRIDA_SERVER_FILENAME --version | tr -d '[:space:]')
 
         if [ $current_server_version == $frida_version ]; then
             echo "- Server already downloaded!"
         else
-            curl --retry $RETRY -L -k -o "$MODPATH/files/frida-server.xz" "$download_url"
+            curl --retry $RETRY -L -k -o "$MODPATH/files/$FRIDA_SERVER_FILENAME.xz" "$download_url"
 
             # extract
-            xz -f -d "$MODPATH/files/frida-server.xz"
+            xz -f -d "$MODPATH/files/$FRIDA_SERVER_FILENAME.xz"
             
             # set exec permission
-            chmod +x "$MODPATH/files/frida-server"
+            chmod +x "$MODPATH/files/$FRIDA_SERVER_FILENAME"
         
         fi;
     
     else
-        curl --retry $RETRY -L -k -o "$MODPATH/files/frida-server.xz" "$download_url"
+        curl --retry $RETRY -L -k -o "$MODPATH/files/$FRIDA_SERVER_FILENAME.xz" "$download_url"
             
         # extract
-        xz -f -d "$MODPATH/files/frida-server.xz"
+        xz -f -d "$MODPATH/files/$FRIDA_SERVER_FILENAME.xz"
             
         # set exec permission
-        chmod +x "$MODPATH/files/frida-server"
+        chmod +x "$MODPATH/files/$FRIDA_SERVER_FILENAME"
 
     fi;
 
@@ -91,14 +90,14 @@ function init_frida_server() {
 
 function run_frida() {
 
-    if pgrep -f "frida-server" > /dev/null; then
-        pkill "frida-server"
+    if pgrep -f "$FRIDA_SERVER_FILENAME" > /dev/null; then
+        pkill "$FRIDA_SERVER_FILENAME"
         # second time is the charm ;)
-        kill -9 $(pidof frida-server)
+        kill -9 $(pidof $FRIDA_SERVER_FILENAME)
     fi;
 
     # start server
-    nohup "$MODPATH/files/frida-server"
+    nohup "$MODPATH/files/$FRIDA_SERVER_FILENAME"
 
 
 }

@@ -2,6 +2,7 @@
 
 
 VERSION_DIR=.
+FRIDA_SERVER_FILENAME="shiny-egg"
 
 
 function script_usage() {
@@ -41,7 +42,7 @@ if [[ $# -lt 3 ]]; then
         fi;
     
     elif [[ $1 == "download" ]]; then
-        if pgrep -f "frida-server" > /dev/null; then
+        if pgrep -f "$FRIDA_SERVER_FILENAME" > /dev/null; then
             echo "- Frida server is already running. Please kill the process first!"
             exit 1
         elif [[ ! -f "$VERSION_DIR/frida_version.txt" ]]; then
@@ -58,8 +59,8 @@ if [[ $# -lt 3 ]]; then
     
     # kill server if running
     elif [[ $1 == "kill" ]]; then
-        if pgrep -f "frida-server" > /dev/null; then
-            kill -9 $(pidof frida-server)
+        if pgrep -f "$FRIDA_SERVER_FILENAME" > /dev/null; then
+            kill -9 $(pidof $FRIDA_SERVER_FILENAME)
             echo "- server killed!"
         
         else
@@ -68,16 +69,16 @@ if [[ $# -lt 3 ]]; then
     
     # start frida server
     elif [[ $1 == "start" ]]; then
-        if pgrep -f "frida-server" > /dev/null; then
+        if pgrep -f "$FRIDA_SERVER_FILENAME" > /dev/null; then
             echo "- server is already running."
         else
-            nohup "$VERSION_DIR/files/frida-server" > "$VERSION_DIR/nohup.out" 2>&1 &
+            nohup "$VERSION_DIR/files/$FRIDA_SERVER_FILENAME" > "$VERSION_DIR/nohup.out" 2>&1 &
             echo "- server started!, happy hacking :)"
         fi;
     
     # check if server is running
     elif [[ $1 == "status" ]]; then
-        if pgrep -f "frida-server" > /dev/null; then
+        if pgrep -f "$FRIDA_SERVER_FILENAME" > /dev/null; then
             echo "- server is running :)"
         else
             echo "- server is not running :("
