@@ -34,7 +34,7 @@ Usage: mafrida [--set <frida-version> | -g | kill | start | status | enable | di
 
 ### Demo
 
-![mafrida-demo](https://gist.github.com/user-attachments/assets/3d85d667-5727-4bda-974f-2dad72f33c78)
+![mafrida-demo](https://private-user-images.githubusercontent.com/56839725/437954863-3d85d667-5727-4bda-974f-2dad72f33c78.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDU3NTkxNjQsIm5iZiI6MTc0NTc1ODg2NCwicGF0aCI6Ii81NjgzOTcyNS80Mzc5NTQ4NjMtM2Q4NWQ2NjctNTcyNy00YmRhLTk3NGYtMmRhZDcyZjMzYzc4LmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MjclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDI3VDEzMDEwNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWU4YTVmM2Q5MDY3MzI5Yjk2Y2JjYzM4ZmQzYzY1YmJjYjk4NTUzZGUwZDg5YjVlZjAzMGM5OTFiZDJhNjIyYTcmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.UEI7CmwW3wl3gnJMQKtWImy5Kw6o4ygMOQwvs_-gxYs)
 
 
 ## Supported Platforms
