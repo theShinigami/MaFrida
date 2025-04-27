@@ -33,7 +33,8 @@ Usage: mafrida [--set <frida-version> | -g | kill | start | status | enable | di
 ```
 
 ### Demo
-![mafrida-demo](https://github-production-user-asset-6210df.s3.amazonaws.com/56839725/437957303-5e68e968-c236-4c71-8005-a96b5da6ca1c.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250427%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250427T145332Z&X-Amz-Expires=300&X-Amz-Signature=4968e79737d8b94f90728e671753bad51693fcd04ef852da3626ec11560725a7&X-Amz-SignedHeaders=host)
+![mafrida_demo](https://github.com/user-attachments/assets/9a0827c9-e2c4-4c78-8af5-82d4ad2fe088)
+
 
 
 ## Supported Platforms
