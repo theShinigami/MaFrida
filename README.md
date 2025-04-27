@@ -33,7 +33,7 @@ Usage: mafrida [--set <frida-version> | -g | kill | start | status | enable | di
 ```
 
 ### Demo
-![mafrida-demo](https://private-user-images.githubusercontent.com/56839725/437957303-5e68e968-c236-4c71-8005-a96b5da6ca1c.gif?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NDU3NTk4MzEsIm5iZiI6MTc0NTc1OTUzMSwicGF0aCI6Ii81NjgzOTcyNS80Mzc5NTczMDMtNWU2OGU5NjgtYzIzNi00YzcxLTgwMDUtYTk2YjVkYTZjYTFjLmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA0MjclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwNDI3VDEzMTIxMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTEyYmU4NWU3NWMwNmQ3MmE5NGZkODQwY2I5YTk1OWRkNDJhMTQ2OTgwZTNkMmM4ZWM3Nzc5N2E0MmJkNDY4NTImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.eBvxkwYHa1o0bpiq2JjUQdiP7MUyh9Ej3oAk7-a16r4)
+![mafrida-demo](https://github-production-user-asset-6210df.s3.amazonaws.com/56839725/437957303-5e68e968-c236-4c71-8005-a96b5da6ca1c.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250427%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250427T145332Z&X-Amz-Expires=300&X-Amz-Signature=4968e79737d8b94f90728e671753bad51693fcd04ef852da3626ec11560725a7&X-Amz-SignedHeaders=host)
 
 
 ## Supported Platforms
