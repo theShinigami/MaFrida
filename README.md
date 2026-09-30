@@ -25,7 +25,7 @@ Usage: mafrida [--set <frida-version> | -g | kill | start | status]
   --set <version>               Set and install the specified Frida version (e.g., 16.1.4)
   -g                            Show the currently set Frida version
   -p, --port <port>             Set server port, default: 27042
-  -i, --ip <ip>                 Set server listen IP, default: 127.0.0.1
+  -i, --ip <ip>                 Set the server's listening IP, default: 127.0.0.1
   -n, --server-filename <name>  server filename, default: shiny-egg
   download                      Download the frida-server binary for the set version
   kill                          Force kill any running frida-server instance
@@ -67,7 +67,7 @@ mafrida download
 mafrida -p 8888
 ```
 
-#### Set a custom listen IP (default: 127.0.0.1):
+#### Set a custom listening IP (default: 127.0.0.1):
 
 ```sh
 mafrida -i 0.0.0.0
