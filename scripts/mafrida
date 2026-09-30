@@ -14,7 +14,7 @@ function script_usage() {
     printf "  --set <version>               Set and install the specified Frida version (e.g., 16.1.4)\n"
     printf "  -g                            Show the currently set Frida version\n"
     printf "  -p, --port <port>             Set server port, default: 27042\n"
-    printf "  -i, --ip <ip>                 Set server listen IP, default: 127.0.0.1\n"
+    printf "  -i, --ip <ip>                 Set the server's listening IP, default: 127.0.0.1\n"
     printf "  -n, --server-filename <name>  server filename, default: shiny-egg\n"    
     printf "  download                      Download the frida-server binary for the set version\n"
     printf "  kill                          Force kill any running frida-server instance\n"
@@ -51,7 +51,7 @@ if [[ $# -lt 3 ]]; then
         echo "- setting port to $2"
         set_config SERVER_PORT $2
 
-    # set custom listen ip
+    # set custom listening ip
     elif [[ $1 == "-i" || $1 == "--ip" ]]; then
 
         echo "- setting ip to $2"
