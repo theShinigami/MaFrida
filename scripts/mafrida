@@ -74,8 +74,8 @@ if [[ $# -lt 3 ]]; then
             echo "- Frida server is already running. Please kill the process first!"
             exit 1
         else
-            init_download_dir >/dev/null 2>&1
-            echo "- Downloading..."
+            init_download_dir
+            echo "- Downloading frida-server for Android SDK $(getprop ro.build.version.sdk) ($(getprop ro.product.cpu.abi))..."
             init_frida_server
             echo "- Done."
         fi;
@@ -97,7 +97,7 @@ if [[ $# -lt 3 ]]; then
         else
             port=$(get_config SERVER_PORT 27042)
             ip=$(get_config SERVER_IP 127.0.0.1)
-            nohup "$MODPATH/files/$FRIDA_SERVER_FILENAME" --listen "$ip:$port" > "$MODPATH/nohup.out" 2>&1 &
+            nohup "$MODPATH/files/$FRIDA_SERVER_FILENAME" --listen "$ip:$port" > /dev/null 2>&1 &
             echo "- server started!, happy hacking :)"
         fi;
     
